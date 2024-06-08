@@ -1,0 +1,20 @@
+<div class="booking-form" *ngIf="car">
+    <h1>Book {{ car.title }}</h1>
+    <img [src]="car.image" alt="{{ car.title }}">
+    <p>Location: {{ car.location }}</p>
+    <p>Price per day: {{ car.price }}</p>
+
+    <div class="form-group">
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate" [(ngModel)]="bookingObj.startDate" name="startDate" class="form-control" (input)="calculateTotalAmount()" required>
+    </div>
+    <div class="form-group">
+        <label for="endDate">End Date</label>
+        <input type="date" id="endDate" [(ngModel)]="bookingObj.endDate" name="endDate" class="form-control" (input)="calculateTotalAmount()" required>
+    </div>
+
+    <p>Total Amount: {{ totalAmount }}$</p>
+    <p *ngIf="discountedAmount > 0">Discounted Amount: {{ discountedAmount }}$</p>
+    <button class="btn btn-primary" (click)="confirmBooking()">Confirm Booking</button>
+    
+</div>

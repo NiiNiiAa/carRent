@@ -1,0 +1,93 @@
+<div class="filter">
+    <div class="filter-cars ">
+        <div class="text-center align-items-center justify-content-center gap-3 row-gap-4">
+            <div class="filter-tools">
+                <label class="text-light">Brand:</label> <br>
+                <select [(ngModel)]="filters.brand">
+                    <option value="">All</option>
+                    <option *ngFor="let brand of brands" [value]="brand">{{brand}}</option>
+                </select>
+            </div>
+            <div class="filter-tools">
+                <label class="text-light">Location:</label> <br>
+                <select [(ngModel)]="filters.location">
+                    <option value="">All</option>
+                    <option *ngFor="let location of locations" [value]="location">{{location}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="d-flex align-items-center justify-content-center gap-2 row-gap-4">
+            <div class="filter-tools">
+                <label class="text-light">Min Price:</label> <br>
+                <input [(ngModel)]="filters.minPrice" placeholder="Min Price" class="price-input">
+            </div>
+            <div class="filter-tools">
+                <label class="text-light">Max Price:</label> <br>
+                <input [(ngModel)]="filters.maxPrice" placeholder="Max Price"  class="price-input">
+            </div>
+        </div>
+
+        <div class="filter-tools mt-3">
+            <button class="btn btn-primary w-25" (click)="applyFilters()">Filter</button>
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="d-flex justify-content-center text-center">
+    <h2> Recomended Cars </h2>
+</div>
+
+<div class="car-list-home-container">
+    <div class="car-list-home">
+        <div class="row">
+            <div class="col-3" *ngFor="let car of filteredCars">
+                <section class="car-list-card">
+                    <div class="car-list-card-image" style="height: 160px;">
+                      <img [src]="car.image">
+                    </div>
+                    <div class="car-list-card-description d-flex">
+                        <div>
+                            <div class="car-list-card-description-reviews">
+                                <div class="car-list-card-description-reviews-icon"><i class="fa fa-star" aria-hidden="true"></i></div>
+                                <div class="car-list-card-description-reviews-value">
+                                    {{car.reviews}}
+                                </div>
+                            </div>
+                            <div class="car-list-card-description-title">
+                              {{car.title}}
+                            </div>
+                            <div class="car-list-card-description-properties gap-3">
+                                <div class="car-list-card-description-properties-property" *ngFor="let property of car.properties">
+                                  {{property}}
+                                    <div class="property-point"></div>
+                                </div>
+                                <div class="car-list-card-button text-center d-flex justify-content-center align-items-center">
+                                    <button class="book_now btn btn-primary" (click)="bookNow(car)">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="car-list-card-price-distance">
+                        <div class="car-list-card-price">
+                            <div class="car-list-card-price-availability-text">
+                                {{car.availability}}
+                            </div>
+                            <div class="car-list-card-price-title">
+                                {{car.price}}
+                            </div>
+                        </div>
+                        <div class="car-list-card-distance ">
+                            <div class="car-list-card-distance-place text-center d-flex justify-content-center align-items-center"> 
+                                <span class="material-symbols-outlined"> pin_drop </span>
+                                {{car.location}}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div> 
+
+

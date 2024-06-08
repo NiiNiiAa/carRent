@@ -1,0 +1,47 @@
+.footer{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(224, 180, 108, 0.66);
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.about_class{
+    width: 50%;
+    padding: 30px;
+    margin: 20px;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.about_us{
+    line-height: 1.5;
+}
+
+.contactUs{
+    width: 50%;
+    padding: 30px;
+    margin: 20px;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.filter{
+    padding: 30px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+    background-color: rgba(46, 46, 46, 0.127);
+}
+
+.filter-cars{
+    width: 50%;
+    margin: auto;
+
+}
+

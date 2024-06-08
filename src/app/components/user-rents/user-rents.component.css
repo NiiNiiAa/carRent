@@ -1,0 +1,29 @@
+.container{
+    display: block;
+    margin: auto;
+    width: 30%;
+    align-items: center;
+    text-align: center;
+
+}
+.addCar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.car-list-home-container{
+    display: inline;
+}
+.car-list-home{
+width: 50%;
+} 
+
+.col-3 {
+    width: auto; }
+
+ .car-list-home[_ngcontent-ng-c2439293800] {
+        width: auto;
+    }
