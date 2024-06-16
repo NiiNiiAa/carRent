@@ -1,49 +1,45 @@
-<div class="container">
-  <h2>Available Cars in Myauto.ge</h2>
-  <div *ngIf="cars.length > 0; else noCars">
-    <div *ngFor="let car of cars" class="card">
-      <div class="card-body">
-        <h5 class="card-title">{{ car.name }}</h5>
-        <p class="card-text">{{ car.description }}</p>
-        <button class="btn btn-primary" (click)="selectCar(car)">Select Car</button>
+   <div class="container">
+    <h2>Available Cars</h2>
+    <div *ngIf="cars.length > 0; else noCars">
+      <div *ngFor="let car of cars" class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ car.brand }} {{ car.model }} ({{ car.year }})</h5>
+          <img [src]="car.imageUrl1" alt="car image">
+          <p class="card-text">Transmission: {{ car.transmission }}</p>
+          <p class="card-text">City: {{ car.city }}</p>
+          <p class="card-text">Price: {{ car.price }} ₾</p>
+          <button class="btn btn-primary" (click)="selectCar(car)">Select Car</button>
+        </div>
       </div>
     </div>
-  </div>
-
-  <ng-template #noCars>
-    <p>No available cars at the moment.</p> 
-  </ng-template>
   
-  <div *ngIf="selectedCar">
-    <h2>Book Selected Car</h2>
-    <div>
-      <h5>{{ selectedCar.title }}</h5>
-      <!-- <img [src]="selectedCar.image" alt="selectedCar"> 
-      <p>Price: {{ selectedCar.price }}</p> 
-      <p>Location: {{ selectedCar.location }}</p>  -->
-      <p> for more information, visit <a href="https://www.myauto.ge/ka/">myauto.ge</a> </p>
+    <ng-template #noCars>
+      <p> Please, press F5</p>
+    </ng-template>
+  
+    <div *ngIf="selectedCar">
+      <h2>Book Selected Car</h2>
+      <div>
+        <h5>{{ selectedCar.brand }} {{ selectedCar.model }} ({{ selectedCar.year }})</h5>
+        <img [src]="selectedCar.imageUrl1" alt="selected car">
+        <p>Transmission: {{ selectedCar.transmission }}</p>
+        <p>City: {{ selectedCar.city }}</p>
+        <p>Price: {{ selectedCar.price }}₾</p>
+      </div>
+      <form (ngSubmit)="bookCar()">
+        <div class="form-group">
+          <label for="startDate">Start Date</label>
+          <input type="date" id="startDate" [(ngModel)]="bookingObj.startDate" name="startDate" class="form-control" (change)="calculateTotalAmount()" required>
+        </div>
+        <div class="form-group">
+          <label for="endDate">End Date</label>
+          <input type="date" id="endDate" [(ngModel)]="bookingObj.endDate" name="endDate" class="form-control" (change)="calculateTotalAmount()" required>
+        </div>
+  
+        <p>Total Amount: {{ totalAmount }}₾</p>
+        <p *ngIf="discountedAmount > 0">Discounted Amount: {{ discountedAmount }}₾</p>
+        <button class="btn btn-primary" (click)="confirmBooking()">Confirm Booking</button>
+      </form>
     </div>
-    <form (ngSubmit)="bookCar()">
-      <div class="form-group">
-        <label for="startDate">Start Date</label>
-        <input type="date" id="startDate" [(ngModel)]="bookingObj.startDate" name="startDate" class="form-control" (change)="calculateTotalAmount()" required>
-      </div>
-      <div class="form-group">
-        <label for="endDate">End Date</label>
-        <input type="date" id="endDate" [(ngModel)]="bookingObj.endDate" name="endDate" class="form-control" (change)="calculateTotalAmount()" required>
-      </div>
-
-      <p>Total Amount: {{ totalAmount }}$</p>
-      <p *ngIf="discountedAmount > 0">Discounted Amount: {{ discountedAmount }}$</p>
-      <button class="btn btn-primary" (click)="confirmBooking()">Confirm Booking</button>
-    </form>
   </div>
-</div>
-
-
-
-
-
-
-
   

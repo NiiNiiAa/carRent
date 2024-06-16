@@ -3,13 +3,26 @@ import { ActivatedRoute } from '@angular/router';
 import { CarService } from 'src/app/services/car.service';  
 
 export interface Car {
+model: any;
   image: string;
   reviews: number;
+  car_id: number;
   title: string;
   properties: string[];
   availability: string;
-  price: string;
+  price: string ;
+  price_usd: number;
   location: string;
+  photo: string;
+  car_model: string;
+  car_desc: string;
+  location_id: number;
+  model_id: number;
+  client_phone: string;
+  user_id: number;
+  status_id: number;
+
+
 }
 
 @Component({

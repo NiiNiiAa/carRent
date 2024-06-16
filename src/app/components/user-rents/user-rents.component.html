@@ -1,73 +1,85 @@
 <div class="container">
-    <h2>Rent Your Car</h2>
-    <form (ngSubmit)="addCar()">
-      <div class="mb-3">
-        <label for="carImage" class="form-label">Car Photo URL</label>
-        <input type="text" class="form-control" id="carImage" [(ngModel)]="newCar.image" name="image">
-      </div>
-      <div class="mb-3">
-        <label for="carTitle" class="form-label">Title</label>
-        <input type="text" class="form-control" id="carTitle" [(ngModel)]="newCar.title" name="title" required>
-      </div>
-      <div class="mb-3">
-        <label for="carProperties" class="form-label">Features (comma-separated)</label>
-        <input type="text" class="form-control" id="carProperties" [(ngModel)]="newCar.properties" name="properties">
-      </div>
-      <div class="mb-3">
-        <label for="carAvailability" class="form-label">Availability Text</label>
-        <input type="text" class="form-control" id="carAvailability" [(ngModel)]="newCar.availabilityText" name="availabilityText">
-      </div>
-      <div class="mb-3">
-        <label for="carPrice" class="form-label">Price $ (per day)</label>
-        <input type="text" class="form-control" id="carPrice" [(ngModel)]="newCar.price" name="price" required>
-      </div>
-      <div class="mb-3">
-        <label for="carLocation" class="form-label">Location</label>
-        <select class="form-control" id="carLocation" [(ngModel)]="newCar.location" name="location" required>
-            <option disabled selected>Select Location</option>
-            <option value="Tbilisi">Tbilisi</option>
-            <option value="Batumi">Batumi</option>
-        </select>
+  <h2>Rent Your Car</h2>
+  <form (ngSubmit)="addCar()">
+    <div class="mb-3">
+      <label for="carTitle" class="form-label">Title</label>
+      <input type="text" class="form-control" id="carTitle" [(ngModel)]="newCar.title" name="title" required>
+    </div>
+    <div class="options mb-3" name="properties">
+      <label for="carProperties" class="form-label">Features</label>
+      <div class="d-flex justify-content-start align-items-center gap-3">
+        <section>
+          <select class="form-control" [(ngModel)]="newCar.transmission" name="transmission">
+            <option value="auto">Auto</option>
+            <option value="mechanics">Mechanics</option>
+          </select>
+        </section>
+        <div class="d-flex justify-content-start align-items-center gap-1">
+          <p class="seats">Seats:</p>
+          <section>
+            <select class="form-control" [(ngModel)]="newCar.seats" name="seats">
+              <option *ngFor="let seat of seatOptions" [value]="seat">{{ seat }}</option>
+            </select>
+          </section>
         </div>
-        <div class="addCar ">
-            <button type="submit" class=" btn btn-primary">Add Car</button>
+        <input type="text" class="fuelType form-control" id="carProperties" placeholder="Fuel Type" [(ngModel)]="newCar.properties" name="fuel">
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="carAvailability" class="form-label">Availability Text</label>
+      <input type="text" class="form-control" id="carAvailability" [(ngModel)]="newCar.availabilityText" name="availabilityText">
+    </div>
+    <div class="mb-3">
+      <label for="carPrice" class="form-label">Price $ (per day)</label>
+      <input type="text" class="form-control" id="carPrice" [(ngModel)]="newCar.price" name="price" required>
+    </div>
+    <div class="mb-3">
+      <label for="carLocation" class="form-label">Location</label>
+      <select class="form-control" id="carLocation" [(ngModel)]="newCar.location" name="location" required>
+        <option disabled selected>Select Location</option>
+        <option value="Tbilisi">Tbilisi</option>
+        <option value="Batumi">Batumi</option>
+      </select>
+    </div>
+    <div class="addCar">
+      <button type="submit" class="btn btn-primary">Add Car</button>
+    </div>
+  </form>
 
-        </div>
-
-    </form>
-  
-    <div class="row car-list-home-container mt-4">
-      <div class="car-list-home-container">
-        <div class="car-list-home ">
-          <div class="row row-gap-3">
-            <div class="col-3" *ngFor="let car of carList">
-              <section class="car-list-card">
-                <div class="car-list-card-image" style="height: 160px;">
-                    <img [src]="car.image" alt="{{ car.title }}">
+  <div class="row car-list-home-container mt-4">
+    <div class="car-list-home-container">
+      <div class="car-list-home">
+        <div class="row row-gap-3">
+          <div class="col-3" *ngFor="let car of carList">
+            <section class="car-list-card">
+              <div class="car-list-card-description">
+                <div class="car-list-card-description-title">
+                  {{ car.title }}
                 </div>
-                <div class="car-list-card-description">
-                  <div class="car-list-card-description-title">
-                    {{ car.title }}
-                  </div>
-                  <div class="car-list-card-description-properties">
-                    <div class="car-list-card-description-properties-property" *ngFor="let property of car.properties">
-                      {{ property }}
-                      <div class="property-point"></div>
-                    </div>
-                  </div>
-                  <div class="car-list-card-price-availability-text">
-                    {{ car.availabilityText }}
-                  </div>
-                  <div class="car-list-card-price">
-                    {{ car.price }}
-                  </div>
-                  <div class="car-list-card-distance">
-                    <div class="car-list-card-distance-place text-center d-flex justify-content-center align-items-center">
-                      <span class="material-symbols-outlined">pin_drop</span>
-                      {{ car.location }}
-                    </div>
+                <div class="car-list-card-description-properties">
+                  <div class="car-list-card-description-properties-property" *ngFor="let property of car.properties">
+                    {{ property }}
+                    <div class="property-point"></div>
                   </div>
                 </div>
-              </section>
-            </div>
-  
+                <div class="car-list-card-price-availability-text">
+                  Availability: {{ car.availabilityText }}
+                </div>
+                <div class="car-list-card-price">
+                  Price: {{ car.price }} $
+                </div>
+                <div class="car-list-card-distance">
+                  <div class="car-list-card-distance-place text-center d-flex justify-content-center align-items-center">
+                    <span class="material-symbols-outlined">pin_drop</span>
+                    {{ car.location }}
+                    <div class="property-point"></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

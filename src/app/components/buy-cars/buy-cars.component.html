@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let product of products">
+      <div class="card">
+        <img [src]="product.photo" class="card-img-top" alt="Car Photo">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.car_model }}</h5>
+          <p><strong>Price:</strong> {{ product.price }} $</p>
+          <p>Phone number: {{ product.client_phone }}</p>
+          <p class="card-text decs">{{ product.car_desc }}</p>
+          <button class="btn-buy btn btn-primary mt-3" (click)="buyCar(product)">Buy Car</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

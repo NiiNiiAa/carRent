@@ -394,6 +394,7 @@
   .row{
     padding: 0 !important;
     margin: 0;
+    row-gap: 20px;
   }
 
   .car-list-home-container {
@@ -765,6 +766,7 @@
     visibility: hidden;
     left: 0;
     right: 0;
+    top: 51px;
     background-color: #ffffff; 
     z-index: 1000;
   }
@@ -772,6 +774,7 @@
   .navbar-components.show-menu {
     display: flex; 
     visibility: inherit;
+    margin:auto ;
   }
 
   .navbar-components a {

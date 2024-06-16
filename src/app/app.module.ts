@@ -23,6 +23,8 @@ import { CarRentComponent } from './components/car-rent/car-rent.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { UserRentsComponent } from './components/user-rents/user-rents.component';
 import { ProtectedComponent } from './components/protected/protected.component';
+import { BuyCarsComponent } from './components/buy-cars/buy-cars.component';
+
 
 
 
@@ -41,6 +43,7 @@ import { ProtectedComponent } from './components/protected/protected.component';
     CarRentComponent,
     UserRentsComponent,
     ProtectedComponent,
+    BuyCarsComponent,
   ],
   imports: [
     BrowserModule,

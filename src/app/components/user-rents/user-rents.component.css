@@ -18,12 +18,87 @@
     display: inline;
 }
 .car-list-home{
-width: 50%;
+width: 100%;
+margin: auto;
+display: flex;
+justify-content: center;
+text-align: center;
+align-items: center;
 } 
 
 .col-3 {
     width: auto; }
 
- .car-list-home[_ngcontent-ng-c2439293800] {
+.car-list-home[_ngcontent-ng-c2439293800] {
         width: auto;
+}
+
+.car-list-home-container .car-list-home .car-list-card-description {
+        position: relative;
+        display: grid;
+        padding: 25px  !important;
+        row-gap: 20px;
     }
+
+p{
+    margin-top: 10px !important;
+}
+
+.fuelType{
+    width: 30%;
+}
+
+
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+}
+
+.options > div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.options select, .options input {
+    max-width: 150px;
+}
+
+.car-list-home-container {
+    margin-top: 2rem;
+}
+
+.car-list-card {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.car-list-card-description {
+    text-align: center;
+}
+
+.car-list-card-description-properties {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.car-list-card-description-properties-property {
+    display: flex;
+    align-items: center;
+}
+
+.property-point {
+    width: 5px;
+    height: 5px;
+    background-color: #000;
+    border-radius: 50%;
+    margin-left: 0.5rem;
+}

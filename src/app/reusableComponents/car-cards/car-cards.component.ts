@@ -24,7 +24,7 @@ interface Car {
 
 export class CarCardsComponent {
 
-  cars: Car[] = []
+  cars: Car[] = [];
   carService: any;
 
   constructor (private http: HttpClient) {}

@@ -93,17 +93,17 @@ export class AppComponent {
 
   showLoginSuccessAlert: boolean = false;
 
+  
+
   login() {
     this.carSrv.signIn(this.user).subscribe({
       next: (data) => {
-        if (data && data.token) {
+        if (data) {
           this.loggedUserObj = data;
-          localStorage.setItem('loggedUser', JSON.stringify(data.user)); // Save user data
-          localStorage.setItem('authToken', data.token); // Save token
+          localStorage.setItem('loggedUser', JSON.stringify(data));
+          localStorage.setItem('authToken', data.token); 
           this.closeLogin();
-          alert('Login Successful');
-        } else {
-          alert('Login Failed: Token not received');
+          // alert('Login Successful');
         }
       },
       error: (err) => {
@@ -114,6 +114,8 @@ export class AppComponent {
   }
   
 
+
+  
   // login() {
   //   this.carSrv.signIn(this.user).subscribe({
   //     next: (data) => {
@@ -131,7 +133,6 @@ export class AppComponent {
   //   });
   // }
   
-
   // login(){
   //   this.carSrv.signIn(this.user).subscribe({
   //     next: (data) => {console.log(data)}
@@ -157,17 +158,13 @@ export class AppComponent {
 
 
   logOff() {
-    // localStorage.removeItem('loggedUser');
-    // this.loggedUserObj = undefined;
-    // this.router.navigate(['/home']);
-      localStorage.removeItem('authToken'); 
-      localStorage.removeItem('loggedUser'); 
-      alert('Logout Successful');
-      this.router.navigate(['/home']); 
-
-    
-  
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('loggedUser');
+    this.loggedUserObj = null; 
+    alert('Logout Successful');
+    this.router.navigate(['/home']);
   }
+  
 
   onSubmit() {
     this.registerObj.userId = Date.now();
