@@ -9,27 +9,28 @@
     </button>
 
     <div class="navbar-components text-center" [ngClass]="{'show-menu': showMenu}">
-      <a href="home">
+      <a routerLink="home">
         <button class="btn nav-tabs round-button" type="button">Home</button>
       </a>
-      <a class="navbar-brand" href="search">
+      <a class="navbar-brand" routerLink="search">
         <button class="btn nav-tabs round-button" type="button">Cars</button>
       </a>
-      <a class="navbar-brand" href="buyCars">
+      <a class="navbar-brand" routerLink="buyCars">
         <button class="btn nav-tabs round-button" type="button">Buy Car</button>
       </a>
-      <a class="navbar-brand" href="booking">
+      <a class="navbar-brand" routerLink="booking">
         <button class="btn nav-tabs round-button" type="button">Partners</button>
       </a>
-      <a class="navbar-brand" href="aboutUs">
+      <a class="navbar-brand" routerLink="aboutUs">
         <button class="btn nav-tabs round-button" type="button">About</button>
       </a>
     </div>
+    
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
       <form class="d-flex" *ngIf="loggedUserObj">
-        <a *ngIf="loggedUserObj" href="userRents">
+        <a *ngIf="loggedUserObj" routerLink="userRents">
           <button class="btn nav-tabs round-button" type="button">Rent A Car</button>
         </a>        
         <button class="btn round-button mx-2" type="button">{{loggedUserObj.name}} Emilys</button>
